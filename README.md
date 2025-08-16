@@ -31,8 +31,8 @@ A sophisticated recommendation system that suggests personalized video content b
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/<your-username>/<your-repo>.git
-   cd <your-repo>
+   https://github.com/Daman2461/ai-video-recommender
+   cd ai-video-recommender
    ```
 
 2. **Create and activate a virtual environment**
