@@ -17,7 +17,7 @@ A sophisticated recommendation system that suggests personalized video content b
 - **Database**: SQLite (can be easily switched to PostgreSQL/MySQL)
 - **Machine Learning**: scikit-learn, pandas, numpy
 - **API Documentation**: Swagger/OpenAPI (automatically generated)
-- **Deployment**: Docker support included
+ 
 
 ## 🚀 Getting Started
 
