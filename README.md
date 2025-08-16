@@ -176,13 +176,4 @@ Steps:
 - Set collection variables:
   - `baseUrl` = http://localhost:8000
   - `FLIC_TOKEN` = your token
-
-## 🐳 Docker Support
-
-Build and run the application using Docker:
-
-```bash
-docker-compose up --build
-```
-
  
