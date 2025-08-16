@@ -1,0 +1,230 @@
+{
+  "info": {
+    "name": "Video Recommendation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Complete Postman collection for all endpoints in app/main.py"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8000" },
+    { "key": "FLIC_TOKEN", "value": "flic_e657dc77ce71262a4f5dc78e0c9e1bf02a7f0e186b664708c39369f182ad2518" }
+  ],
+  "item": [
+    {
+      "name": "Root",
+      "item": [
+        {
+          "name": "GET /",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/", "host": ["{{baseUrl}}"], "path": [""] }
+          }
+        },
+        {
+          "name": "Docs",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/docs", "host": ["{{baseUrl}}"], "path": ["docs"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "POST /admin/import_external",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Flic-Token", "value": "{{FLIC_TOKEN}}" } ],
+            "url": {
+              "raw": "{{baseUrl}}/admin/import_external",
+              "host": ["{{baseUrl}}"],
+              "path": ["admin", "import_external"],
+              "query": [
+                { "key": "project_code", "value": "", "disabled": true }
+              ]
+            }
+          }
+        },
+        {
+          "name": "POST /train",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{baseUrl}}/train", "host": ["{{baseUrl}}"], "path": ["train"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Recommendations",
+      "item": [
+        {
+          "name": "GET /feed",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/feed?username=daman&page=1&page_size=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["feed"],
+              "query": [
+                { "key": "username", "value": "daman" },
+                { "key": "project_code", "value": "", "disabled": true },
+                { "key": "page", "value": "1" },
+                { "key": "page_size", "value": "10" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Data Collection (Proxy)",
+      "item": [
+        {
+          "name": "GET /data/users",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Flic-Token", "value": "{{FLIC_TOKEN}}" } ],
+            "url": { "raw": "{{baseUrl}}/data/users", "host": ["{{baseUrl}}"], "path": ["data", "users"] }
+          }
+        },
+        {
+          "name": "GET /data/posts/summary",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Flic-Token", "value": "{{FLIC_TOKEN}}" } ],
+            "url": { "raw": "{{baseUrl}}/data/posts/summary", "host": ["{{baseUrl}}"], "path": ["data", "posts", "summary"] }
+          }
+        },
+        {
+          "name": "GET /data/posts/view",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Flic-Token", "value": "{{FLIC_TOKEN}}" } ],
+            "url": { "raw": "{{baseUrl}}/data/posts/view", "host": ["{{baseUrl}}"], "path": ["data", "posts", "view"] }
+          }
+        },
+        {
+          "name": "GET /data/posts/like",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Flic-Token", "value": "{{FLIC_TOKEN}}" } ],
+            "url": { "raw": "{{baseUrl}}/data/posts/like", "host": ["{{baseUrl}}"], "path": ["data", "posts", "like"] }
+          }
+        },
+        {
+          "name": "GET /data/posts/inspire",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Flic-Token", "value": "{{FLIC_TOKEN}}" } ],
+            "url": { "raw": "{{baseUrl}}/data/posts/inspire", "host": ["{{baseUrl}}"], "path": ["data", "posts", "inspire"] }
+          }
+        },
+        {
+          "name": "GET /data/posts/rating",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Flic-Token", "value": "{{FLIC_TOKEN}}" } ],
+            "url": { "raw": "{{baseUrl}}/data/posts/rating", "host": ["{{baseUrl}}"], "path": ["data", "posts", "rating"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Local Data",
+      "item": [
+        {
+          "name": "POST /local/users",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"daman\",\n  \"first_name\": \"Daman\",\n  \"last_name\": \"Singh\",\n  \"picture_url\": \"https://example.com/avatar.png\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/local/users", "host": ["{{baseUrl}}"], "path": ["local", "users"] }
+          }
+        },
+        {
+          "name": "POST /local/categories",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"DeFi\",\n  \"description\": \"Decentralized Finance\",\n  \"image_url\": \"https://example.com/cat.png\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/local/categories", "host": ["{{baseUrl}}"], "path": ["local", "categories"] }
+          }
+        },
+        {
+          "name": "POST /local/topics",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Solana\",\n  \"description\": \"Solana Ecosystem\",\n  \"image_url\": null,\n  \"is_public\": true,\n  \"project_code\": \"solana\",\n  \"language\": \"en\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/local/topics", "host": ["{{baseUrl}}"], "path": ["local", "topics"] }
+          }
+        },
+        {
+          "name": "POST /local/posts",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"What is DAI Stablecoin\",\n  \"video_link\": \"https://example.com/video.mp4\",\n  \"thumbnail_url\": \"https://example.com/thumb.jpg\",\n  \"gif_thumbnail_url\": null,\n  \"is_available_in_public_feed\": true,\n  \"is_locked\": false,\n  \"slug\": \"dai-stablecoin\",\n  \"identifier\": \"ext-1064\",\n  \"comment_count\": 0,\n  \"upvote_count\": 0,\n  \"view_count\": 0,\n  \"exit_count\": 0,\n  \"rating_count\": 0,\n  \"average_rating\": 0,\n  \"share_count\": 0,\n  \"bookmark_count\": 0,\n  \"contract_address\": \"0x\",\n  \"chain_id\": \"ethereum\",\n  \"chart_url\": \"https://dexscreener.com/ethereum/0x\",\n  \"category_id\": 1,\n  \"topic_id\": 1,\n  \"owner_username\": \"daman\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/local/posts", "host": ["{{baseUrl}}"], "path": ["local", "posts"] }
+          }
+        },
+        {
+          "name": "POST /local/interactions",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"daman\",\n  \"post_id\": 1,\n  \"interaction_type\": \"like\"\n}"
+            },
+            "url": { "raw": "{{baseUrl}}/local/interactions", "host": ["{{baseUrl}}"], "path": ["local", "interactions"] }
+          }
+        },
+        {
+          "name": "GET /local/interactions",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/local/interactions?username=daman&limit=50",
+              "host": ["{{baseUrl}}"],
+              "path": ["local", "interactions"],
+              "query": [
+                { "key": "username", "value": "daman" },
+                { "key": "limit", "value": "50" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "DELETE /local/interactions",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/local/interactions?username=daman&post_id=1&interaction_type=like",
+              "host": ["{{baseUrl}}"],
+              "path": ["local", "interactions"],
+              "query": [
+                { "key": "username", "value": "daman" },
+                { "key": "post_id", "value": "1" },
+                { "key": "interaction_type", "value": "like" }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
